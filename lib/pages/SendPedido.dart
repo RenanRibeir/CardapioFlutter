@@ -71,7 +71,7 @@ class SendPedido extends StatelessWidget {
 
   Future<void> _onClick() async {
 
-    String phone = '+5585998688631';
+    String phone = '+55000000';
     String msg = pedido();
 
     String url = 'https://api.whatsapp.com/send?phone=' + phone +'&text=Pedido%0A' +msg+ ' _blank';

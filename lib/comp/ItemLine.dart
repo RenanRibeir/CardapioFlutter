@@ -34,7 +34,7 @@ class _ItemLine extends State<ItemLine> {
                     setState(() {
                       qtd = qtd - 1;
                     });
-                    ItemsPage.decrementarItem(int.parse(widget.item.id));
+                    ItemsPage.decrementarItem(widget.item.name);
                   }
                 },
                 icon: Icon(Icons.exposure_minus_1)),
@@ -44,7 +44,7 @@ class _ItemLine extends State<ItemLine> {
                   setState(() {
                     qtd = qtd + 1;
                   });
-                  ItemsPage.incrementarItem(int.parse(widget.item.id));
+                  ItemsPage.incrementarItem(widget.item.name);
                 },
                 icon: Icon(Icons.add)),
           ],

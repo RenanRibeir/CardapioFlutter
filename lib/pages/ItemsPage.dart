@@ -56,12 +56,14 @@ class ItemsPage extends StatelessWidget {
     }
   }
 
-  static void incrementarItem(int id) {
-    pedido.elementAt(id).qtd = pedido.elementAt(id).qtd + 1;
+  static void incrementarItem(String name) {
+    pedido.singleWhere((element) => element.item.name == name).qtd =
+        pedido.singleWhere((element) => element.item.name == name).qtd + 1;
   }
 
-  static void decrementarItem(int id) {
-    pedido.elementAt(id).qtd = pedido.elementAt(id).qtd - 1;
+  static void decrementarItem(String name) {
+    pedido.singleWhere((element) => element.item.name == name).qtd =
+        pedido.singleWhere((element) => element.item.name == name).qtd - 1;
   }
 
   Future push(BuildContext context, Widget page, {bool flagBack = true}) {

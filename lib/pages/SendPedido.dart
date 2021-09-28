@@ -6,6 +6,9 @@ import 'package:menuautoatendimento/comp/comp_textformfield.dart';
 import 'package:menuautoatendimento/models/ItemPedido.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+TextEditingController _nome = TextEditingController();
+TextEditingController _mesa = TextEditingController();
+
 class SendPedido extends StatelessWidget {
   final List<ItemPedido> items;
 
@@ -21,12 +24,11 @@ class SendPedido extends StatelessWidget {
   }
 
   _body() {
-    // key: identificador de cada componente
     GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-    // OBS: útil em testes, se quiser já autopreencher, usar o arg text
-    TextEditingController _contEmail = TextEditingController();
-    TextEditingController _contPass = TextEditingController();
+    _nome = TextEditingController();
+    _mesa = TextEditingController();
+
     FocusNode _focusPass = FocusNode();
 
     return Form(
@@ -36,8 +38,8 @@ class SendPedido extends StatelessWidget {
         child: ListView(
           children: [
             CompTextFormField(
-              "Mesa", "Digite o numero da sua mesa", _contEmail,
-              inputType: TextInputType.emailAddress,
+              "Mesa", "Digite o numero da sua mesa", _mesa,
+              inputType: TextInputType.number,
               inputValidator: _validate,
               inputActionNext: _focusPass,
               inputListFormatter: [
@@ -48,9 +50,8 @@ class SendPedido extends StatelessWidget {
             CompTextFormField(
               "Nome",
               "Digite seu nome",
-              _contPass,
-              inputType: TextInputType.number,
-              inputObscure: true,
+              _nome,
+              inputType: TextInputType.name,
               inputValidator: _validate,
               inputFocusNode: _focusPass,
               inputAction: TextInputAction.send,
@@ -70,11 +71,16 @@ class SendPedido extends StatelessWidget {
   }
 
   Future<void> _onClick() async {
-
-    String phone = '+5585998688631';
+    String phone = '+5585998688631'; //numero do estabelecimento
     String msg = pedido();
+    String nome = "Nome%20do%20cliente: " + _nome.text;
+    String mesa = "%20Mesa:%20" + _mesa.text + "%0A";
+    String url = 'https://api.whatsapp.com/send?phone=' +
+        phone +
+        '&text=Pedido%0A%0A$nome%20$mesa' +
+        msg;
 
-    String url = 'https://api.whatsapp.com/send?phone=' + phone +'&text=Pedido%0A' +msg+ ' _blank';
+    print(url);
 
     if (await canLaunch(url)) {
       await launch(url);
@@ -99,6 +105,7 @@ class SendPedido extends StatelessWidget {
 
     return retorno;
   }
+
   String pedidoFormat() {
     String retorno = ' ';
     double total = 0;

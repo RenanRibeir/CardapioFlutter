@@ -1,16 +1,11 @@
 # menuautoatendimento
 
-A new Flutter project.
+Projeto flutter simples para praticar widgets basicos
 
-## Getting Started
+Trata-se de um cardapio virtual que inicialmente encaminha o pedido para o whatsapp do restaurante.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+![tela1](https://user-images.githubusercontent.com/47489243/134721604-2c30bc6b-416a-493d-be0e-9afd520381aa.jpeg)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![tela2](https://user-images.githubusercontent.com/47489243/134721621-5520834e-9a3e-4674-9923-463746b1ab1b.jpeg)

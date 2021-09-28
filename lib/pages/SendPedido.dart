@@ -71,7 +71,8 @@ class SendPedido extends StatelessWidget {
   }
 
   Future<void> _onClick() async {
-    String phone = '+5585998688631'; //numero do estabelecimento
+    String phone = '+55000000'; //numero do estabelecimento
+
     String msg = pedido();
     String nome = "Nome%20do%20cliente: " + _nome.text;
     String mesa = "%20Mesa:%20" + _mesa.text + "%0A";
